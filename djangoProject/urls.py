@@ -16,8 +16,48 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.shortcuts import HttpResponse
+
+import home
+from book import views as book_view
+from django.urls import reverse
+# from movie import views as movie_view
+# from home import views as home_view
+
+
+# www.baidu.com/y?wd=python
+# URL与视图的映射
+# /y(URL) -> 视图函数，进行映射
+
+def index(request):
+    # print(reverse('book_detail_query_string'))
+    # /book/str/1
+    print(reverse("book_str", kwargs={"book_id": 1}))
+
+    # /book/id?1
+    print(reverse("book_detail_query_string") + "?book_id=1")
+
+    # 带命名空间
+    print(reverse("movie:movie_list"))
+    return HttpResponse("hello")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', index, name="index"),
+
+    # 127.0.0.1:8000/book/id=1&name=111
+    path("book/", book_view.book_detail_query_string, name="book_detail_query_string"),
+
+    # 127.0.0.1:8000/book/1
+    path("book/<int:book_id>", book_view.book_detail_path, name="book_detail_path"),  # 默认是str类型
+    path("book/str/<str:book_id>", book_view.book_str, name="book_str"),
+    path("book/slug/<slug:book_id>", book_view.book_slug, name="book_slug"),
+    path("book/path/<path:book_id>", book_view.book_path, name="book_path"),
+
+    # include()   movie/加了斜杠在视图函数就不用了
+    path("movie/", include("movie.urls")),
+    path("home/", include("home.urls"))
+
 ]

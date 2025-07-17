@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if age > 18 %}
+    <h3>已成年</h3>
+{% elif age == 18 %}
+    <h3>刚成年</h3>
+{% elif age < 18 %}
+    <h3>未成年</h3>
+{% endif %}
+</body>
+</html>
