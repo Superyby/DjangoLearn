@@ -40,6 +40,8 @@ def index(request):
 
     # 带命名空间
     print(reverse("movie:movie_list"))
+
+    # 上面的3个输出在 ''的index路径里只会输出hello
     return HttpResponse("hello")
 
 
@@ -58,6 +60,7 @@ urlpatterns = [
 
     # include()   movie/加了斜杠在视图函数就不用了
     path("movie/", include("movie.urls")),
-    path("home/", include("home.urls"))
+    path("home/", include("home.urls")),
+    path("data/", include("databaseDemo.urls")),
 
 ]

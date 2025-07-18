@@ -1,0 +1,30 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>index</title>#}
+{#</head>#}
+{#<body>#}
+{#{% include "xfz-hotairticle.html" %}#}
+{#</body>#}
+{#</html>#}
+
+
+{% extends "xfz_base.html" %}
+
+{% block title %}
+    首页
+{% endblock title %}
+
+{% block css %}
+<style>
+    body {
+        background-color: aqua;
+    }
+</style>
+{% endblock css%}
+
+{% block body %}
+    {{ block.super }}
+    {% include "xfz-hotairticle.html" %}
+{% endblock body %}

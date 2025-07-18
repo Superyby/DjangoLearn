@@ -1,0 +1,1 @@
+alert("Hello World,我是static的js文件")

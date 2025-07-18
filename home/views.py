@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from datetime import datetime
 
 
 # Create your views here.
@@ -83,3 +85,29 @@ def url_view(request):
         "username": "yu"
     }
     return render(request, "url.html", context=context)
+
+
+def book_detail(request, book_id):
+    return HttpResponse(f"book_id: {book_id}")
+
+
+def filter_view(request):
+    greet = "hello world ,nihao django"
+    context = {
+        "greet": greet,
+        "birthday": datetime.now(),
+        "profile": "",
+        "html": "<h1>hello world yu</h1>"
+    }
+    return render(request, "filter.html", context=context)
+
+
+def template_form(request):
+    context = {
+        'articles': ['小米su7', 'chat gpt']
+    }
+    return render(request, "xfz_index.html", context=context)
+
+
+def static_view(request):
+    return render(request, "static.html")

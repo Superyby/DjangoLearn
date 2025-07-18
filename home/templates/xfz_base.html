@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}---yu</title>
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="/course/">课堂</a></li>
+    </ul>
+</header>
+
+{% block body %}
+    我是父类模板
+{% endblock %}
+
+<footer>
+    <p>Copyright &copy; 2019</p>
+</footer>
+</body>
+</html>
