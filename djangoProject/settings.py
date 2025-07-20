@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "book",
     "movie",
     "home",
-    "databaseDemo"
+    "databaseDemo",
 ]
 
 MIDDLEWARE = [
@@ -79,7 +79,7 @@ WSGI_APPLICATION = "djangoProject.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "database_demo",
+        "NAME": "book",
         "USER": "root",
         "PASSWORD": "yushijie521.@",
         "HOST": "47.109.146.251",
@@ -116,7 +116,8 @@ TIME_ZONE = "Asia/Shanghai"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
+# navie time(不知道时区的时间),aware time(知道时区的时间)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

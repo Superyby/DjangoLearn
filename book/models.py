@@ -1,3 +1,25 @@
 from django.db import models
+from datetime import datetime
+
 
 # Create your models here.
+class Book(models.Model):
+    name = models.CharField(max_length=100)
+    author = models.CharField(max_length=100, null=False)
+    pub_time = models.DateTimeField(auto_now_add=True)
+    price = models.FloatField(default=0)
+
+
+class Author(models.Model):
+    is_active = models.BooleanField()
+    username = models.CharField(max_length=100)
+    data_joined = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField()
+    visit_count = models.IntegerField()
+    profile = models.TextField()
+    website = models.URLField()
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=100, db_column='tag_name', unique=True)
+    create_time = models.DateTimeField(default=datetime.now)

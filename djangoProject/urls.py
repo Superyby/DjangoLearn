@@ -22,6 +22,8 @@ from django.shortcuts import HttpResponse
 import home
 from book import views as book_view
 from django.urls import reverse
+
+
 # from movie import views as movie_view
 # from home import views as home_view
 
@@ -62,5 +64,6 @@ urlpatterns = [
     path("movie/", include("movie.urls")),
     path("home/", include("home.urls")),
     path("data/", include("databaseDemo.urls")),
+    path("book/", include("book.urls")),
 
 ]
