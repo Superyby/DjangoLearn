@@ -23,3 +23,32 @@ def index(request):
         else:
             print(form.errors)
             return HttpResponse("表单验证失败")
+
+
+@require_http_methods(['GET', 'POST'])
+def register_view(request):
+    if request.method == 'GET':
+        return render(request, 'register.html')
+    elif request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            telephone = form.cleaned_data.get('telephone')
+            return HttpResponse(f'telephone:{telephone}')
+        else:
+            print(form.errors.get_json_data())
+            return HttpResponse("表单验证失败")
+
+
+@require_http_methods(['GET', 'POST'])
+def article_view(request):
+    if request.method == 'GET':
+        return render(request, 'article.html')
+    else:
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            content = form.cleaned_data.get('content')
+            return HttpResponse(f'title:{title},content:{content}')
+        else:
+            print(form.errors.get_json_data())
+            return HttpResponse("表单验证失败")

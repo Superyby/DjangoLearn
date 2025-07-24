@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import render
 from django.shortcuts import HttpResponse
 
 import home
@@ -33,23 +34,24 @@ from django.urls import reverse
 # /y(URL) -> 视图函数，进行映射
 
 def index(request):
-    # print(reverse('book_detail_query_string'))
-    # /book/str/1
-    print(reverse("book_str", kwargs={"book_id": 1}))
-
-    # /book/id?1
-    print(reverse("book_detail_query_string") + "?book_id=1")
-
-    # 带命名空间
-    print(reverse("movie:movie_list"))
-
-    # 上面的3个输出在 ''的index路径里只会输出hello
-    return HttpResponse("hello")
+    print("hello")
+    # # print(reverse('book_detail_query_string'))
+    # # /book/str/1
+    # print(reverse("book_str", kwargs={"book_id": 1}))
+    #
+    # # /book/id?1
+    # print(reverse("book_detail_query_string") + "?book_id=1")
+    #
+    # # 带命名空间
+    # print(reverse("movie:movie_list"))
+    #
+    # # 上面的3个输出在 ''的index路径里只会输出hello
+    return render(request, 'index.html')
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', index, name="index"),
+    path('index/', index, name="index"),
     # include()   movie/加了斜杠在视图函数就不用了
     path("movie/", include("movie.urls")),
     path("home/", include("home.urls")),
@@ -58,4 +60,5 @@ urlpatterns = [
     path("article/", include("article.urls")),
     path("front/", include("front.urls")),
     path("form_demo/", include("form_demo.urls")),
+    path("cookie_session/", include("cookie_session_demo.urls")),
 ]

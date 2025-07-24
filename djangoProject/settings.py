@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "databaseDemo",
     "article",
     "front",
-    "form_demo"
+    "form_demo",
+    "cookie_session_demo"
 ]
 
 MIDDLEWARE = [
