@@ -1,0 +1,7 @@
+from django.urls import path
+import form_demo.views as form_demo
+
+app_name = 'form_demo'
+urlpatterns = [
+    path('index/', form_demo.index, name='form_index'),
+]

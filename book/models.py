@@ -9,6 +9,10 @@ class Book(models.Model):
     pub_time = models.DateTimeField(auto_now_add=True)
     price = models.FloatField(default=0)
 
+    class Meta:
+        db_table = 'book_table'
+        ordering = ('-pub_time', 'name')
+
 
 class Author(models.Model):
     is_active = models.BooleanField()

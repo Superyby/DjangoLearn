@@ -50,20 +50,12 @@ def index(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', index, name="index"),
-
-    # 127.0.0.1:8000/book/id=1&name=111
-    path("book/", book_view.book_detail_query_string, name="book_detail_query_string"),
-
-    # 127.0.0.1:8000/book/1
-    path("book/<int:book_id>", book_view.book_detail_path, name="book_detail_path"),  # 默认是str类型
-    path("book/str/<str:book_id>", book_view.book_str, name="book_str"),
-    path("book/slug/<slug:book_id>", book_view.book_slug, name="book_slug"),
-    path("book/path/<path:book_id>", book_view.book_path, name="book_path"),
-
     # include()   movie/加了斜杠在视图函数就不用了
     path("movie/", include("movie.urls")),
     path("home/", include("home.urls")),
     path("data/", include("databaseDemo.urls")),
     path("book/", include("book.urls")),
-
+    path("article/", include("article.urls")),
+    path("front/", include("front.urls")),
+    path("form_demo/", include("form_demo.urls")),
 ]

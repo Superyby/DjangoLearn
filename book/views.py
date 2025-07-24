@@ -27,7 +27,7 @@ def book_path(request, book_id):
 
 
 def add_book(request):
-    book = Book(name='水浒传', author='施耐庵', price=70)
+    book = Book(name='三国演义', author='罗贯中', price=50)
     book.save()
     return HttpResponse("图书添加成功")
 
@@ -42,7 +42,8 @@ def query_book(request):
 
 
 def order_view(request):
-    books = Book.objects.order_by("pub_time")
+    # books = Book.objects.order_by("pub_time")
+    books = Book.objects.all()
     for book in books:
         print(book.name, book.author, book.price)
 
