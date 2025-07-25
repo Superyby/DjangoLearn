@@ -19,8 +19,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
-
+from django.conf import settings
 import home
+from django.conf.urls.static import static
 from book import views as book_view
 from django.urls import reverse
 
@@ -61,4 +62,8 @@ urlpatterns = [
     path("front/", include("front.urls")),
     path("form_demo/", include("form_demo.urls")),
     path("cookie_session/", include("cookie_session_demo.urls")),
+    path("csrf/", include("csrf_demo.urls")),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

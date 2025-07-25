@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>星际登录</title>
+    {% load static %}
     <style>
         /* 基础变量 */
         :root {
@@ -25,12 +26,45 @@
             height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--dark-bg);
+            overflow: hidden;
+        }
+
+        /* 视频背景容器 */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* 背景遮罩 */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 44, 0.7); /* 半透明遮罩 */
+            z-index: -1;
         }
 
         /* 宇宙背景 */
         .universe {
-            background: url('./img/indexBackground.jpg') no-repeat center center fixed;
-            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -133,6 +167,16 @@
     </style>
 </head>
 <body>
+    <!-- 视频背景 -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="{% static 'img/Pexels Videos 1851190.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- 遮罩层 -->
+    <div class="video-overlay"></div>
+
     <div class="universe">
         <div class="frosted-glass">
             <div class="title">星际漫游者登录</div>
